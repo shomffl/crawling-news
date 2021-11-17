@@ -18,7 +18,7 @@ class CrawlingNews:
     def crawling(self):
         # ニュース記事のRSSからタイトルと要約を取得してリストに格納する。
         data = feedparser.parse(self.rss_url)
-        news = [[entry.title, entry.summary] for entry in data.entries]
+        news = [[entry.title, entry.summary, entry.link] for entry in data.entries]
 
         return news
 
@@ -51,6 +51,7 @@ class AddFirebase:
             try:
                 title = data[0]
                 summary = data[1]
+                link = data[2]
 
                 # Firestoreにアクセスして上記のcollection_name変数に格納した名前のcollectionを作成する。
                 # Firestoreの場合、指定されたコレクションが存在しない場合は、自動的に生成される。
@@ -60,6 +61,7 @@ class AddFirebase:
                 doc_ref.add({
                     "title": title,
                     "summary": summary,
+                    "link": link,
                 })
             except:
                 pass
@@ -80,4 +82,4 @@ JSON_PATH = os.environ["FIREBASE_API_KEY"]
 news_data = CrawlingNews(URL)
 news_list = news_data.crawling()
 add_firebase = AddFirebase(news_list, JSON_PATH)
-add_firebase.add_database()
+print(add_firebase.add_database())
