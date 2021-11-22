@@ -18,7 +18,7 @@ class AddFirebase:
         if not firebase_admin._apps:
             cred = credentials.Certificate(self.json_path)
             firebase_admin.initialize_app(cred)
-            
+
         db = firestore.client()
 
         # 現在時刻の取得
@@ -48,5 +48,11 @@ class AddFirebase:
                 })
             except:
                 pass
+
+        # コレクションの名前をFirestoreに格納する
+        # Firestoreではコレクションの名前をライブラリなどで取得することができない。そのため、コレクションの名前をデータとして格納することで、疑似的にコレクション名を取得できるようにする。
+        doc_ref = db.collection("collections_name")
+        doc_ref.add({"name": collection_name})
+
 
         return collection_name
