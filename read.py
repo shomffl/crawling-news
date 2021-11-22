@@ -3,7 +3,7 @@ import firebase_admin
 from firebase_admin import credentials
 
 
-
+# 指定されたコレクションのデータを読み取るためのクラス
 class ReadCollection:
 
     def __init__(self, collection_name, json_path):
@@ -12,11 +12,11 @@ class ReadCollection:
 
 
     def read(self):
-# Firebaseが初期化されているかの確認
+        # Firebaseが初期化されているかの確認
         if not firebase_admin._apps:
             cred = credentials.Certificate(self.json_path)
             firebase_admin.initialize_app(cred)
-            
+
         db = firestore.client()
 
         docs = db.collection(self.collection_name).get()
