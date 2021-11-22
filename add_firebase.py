@@ -14,8 +14,11 @@ class AddFirebase:
     def add_database(self):
 
         # Firebaseの初期化
-        cred = credentials.Certificate(self.json_path)
-        firebase_admin.initialize_app(cred)
+        # Firebaseが初期化されているかの確認
+        if not firebase_admin._apps:
+            cred = credentials.Certificate(self.json_path)
+            firebase_admin.initialize_app(cred)
+            
         db = firestore.client()
 
         # 現在時刻の取得

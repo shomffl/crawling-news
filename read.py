@@ -12,8 +12,11 @@ class ReadCollection:
 
 
     def read(self):
-        # cred = credentials.Certificate(self.json_path)
-        # firebase_admin.initialize_app(cred)
+# Firebaseが初期化されているかの確認
+        if not firebase_admin._apps:
+            cred = credentials.Certificate(self.json_path)
+            firebase_admin.initialize_app(cred)
+            
         db = firestore.client()
 
         docs = db.collection(self.collection_name).get()
