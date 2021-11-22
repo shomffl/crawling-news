@@ -12,8 +12,8 @@ class ReadCollection:
 
 
     def read(self):
-        cred = credentials.Certificate(self.json_path)
-        firebase_admin.initialize_app(cred)
+        # cred = credentials.Certificate(self.json_path)
+        # firebase_admin.initialize_app(cred)
         db = firestore.client()
 
         docs = db.collection(self.collection_name).get()

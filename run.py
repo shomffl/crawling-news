@@ -11,6 +11,7 @@ URL = "https://www.news24.jp/rss/index.rdf"
 # FirebaseのAPIキー
 load_dotenv()
 JSON_PATH = os.environ["FIREBASE_API_KEY"]
+print(JSON_PATH)
 
 news_data = CrawlingNews(URL)
 news_list = news_data.crawling()
