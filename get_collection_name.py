@@ -22,7 +22,7 @@ class GetCollenctionName:
         docs = db.collection("collections_name").get()
 
         # collections_nameのデータの値をリストに格納
-        names_list = [doc.to_dict()["name"] for doc in docs]
+        names_list = sorted([doc.to_dict()["name"] for doc in docs])
 
         # リストの最後尾の値（最も新しく追加されたコレクション名）を返す
         return names_list[-1]
