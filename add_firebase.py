@@ -25,7 +25,7 @@ class AddFirebase:
         datetime_now = datetime.datetime.now()
 
         # 取得した現在時刻を任意のフォーマットに変更
-        formated_time = datetime_now.strftime("%Y年%m月%d日%H時%M分")
+        formated_time = datetime_now.strftime("%Y年%m月%d日%H時%M分%S秒")
 
         # Firestoreのcollectionの名前を"news_{現在時刻}"という形式にする
         collection_name = f"news_{formated_time}"
