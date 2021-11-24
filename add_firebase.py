@@ -38,7 +38,8 @@ class AddFirebase:
 
                 # Firestoreにアクセスして上記のcollection_name変数に格納した名前のcollectionを作成する。
                 # Firestoreの場合、指定されたコレクションが存在しない場合は、自動的に生成される。
-                doc_ref = db.collection(collection_name)
+                base_ref = db.collection("news_data").document("data_set")
+                doc_ref = base_ref.collection(collection_name)
 
                 # collectionにタイトルと要約を追加していく。
                 doc_ref.add({

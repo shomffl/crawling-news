@@ -19,7 +19,8 @@ class ReadCollection:
 
         db = firestore.client()
 
-        docs = db.collection(self.collection_name).get()
+        base_ref = db.collection("news_data").document("data_set")
+        docs = base_ref.collection(self.collection_name).get()
 
         for doc in docs:
             data = doc.to_dict()
