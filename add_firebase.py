@@ -41,7 +41,7 @@ class AddFirebase:
                 base_ref = db.collection("news_data").document("data_set")
                 doc_ref = base_ref.collection(collection_name)
 
-                # collectionにタイトルと要約を追加していく。
+                # collectionにタイトルと要約、リンクを追加していく。
                 doc_ref.add({
                     "title": title,
                     "summary": summary,
