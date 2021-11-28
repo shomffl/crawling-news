@@ -5,7 +5,7 @@ import datetime
 
 
 # Firebaseにデータを追加するためのクラス
-class AddFirebase:
+class AddNewsData:
 
     def __init__(self, news_list, json_path):
         self.news_list = news_list
