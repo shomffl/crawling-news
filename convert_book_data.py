@@ -4,8 +4,9 @@ from get_summary import GetSummary
 # 本の情報をjson形式に変換してフォルダーに格納するクラス
 class ConvertBookData:
 
-    def __init__(self, book_lists):
+    def __init__(self, book_lists, folder_path):
         self.book_lists = book_lists
+        self.folder_path = folder_path
 
     def convert(self):
         # 複数の本のデータが「タイトル、ISBNコード」の順で二次元配列で渡される
@@ -23,5 +24,5 @@ class ConvertBookData:
 
             # 指定されたフォルダーにISBNコードをファイル名としてデータを格納する
             # データは辞書型からjson形式に変換する
-            with open(f"./book_files/{ISBN}.json", "w") as f:
+            with open(f"{self.folder_path}/{ISBN}.json", "w") as f:
                 f.write(json.dumps(dict_book, sort_keys=True, indent=4))
