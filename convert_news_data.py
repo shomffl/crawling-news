@@ -1,7 +1,7 @@
 import json
 
 
-# クローリングしたニュースのデータをjson形式にしてフォルダーに格納する
+# クローリングしたニュースのデータをjson形式にしてフォルダーに格納するクラス
 class ConvertNewsData:
 
     def __init__(self, news_data, file_path):
