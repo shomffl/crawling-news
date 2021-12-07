@@ -16,14 +16,12 @@ class GetSummary:
         # 最初にopenBDを使った方法で本の要約の取得を試みる
         book1 = GetBookData1(self.ISBN)
         summary = book1.read()
-        print(1, summary)
 
         # 仮にopenBDを使って本の要約を取得できなかったら、楽天ブックスを使って取得を試みる
         if summary == "":
             APP_ID = os.environ["RAKUTEN_BOOKS_APP_ID"]
             book2 = GetBookData2(self.ISBN, APP_ID)
             summary = book2.read()
-            print(2, summary)
         else:
             pass
 
