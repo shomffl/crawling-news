@@ -24,5 +24,5 @@ class ConvertBookData:
 
             # 指定されたフォルダーにISBNコードをファイル名としてデータを格納する
             # データは辞書型からjson形式に変換する
-            with open(f"{self.folder_path}/{ISBN}.json", "w") as f:
-                f.write(json.dumps(dict_book, sort_keys=True, indent=4))
+            with open(f"{self.folder_path}/{ISBN}.json", "w", encoding="utf-8") as f:
+                json.dump(dict_book, f, indent=4, ensure_ascii=False)

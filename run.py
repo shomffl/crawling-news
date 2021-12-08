@@ -45,5 +45,5 @@ data_list = os.listdir("./book_files/")
 
 for i in data_list:
 
-    with open(f"./book_files/{i}", "r") as f:
+    with open(f"./book_files/{i}", "r", encoding="utf-8") as f:
         print(json.loads(f.read()))

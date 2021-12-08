@@ -21,8 +21,8 @@ class ConvertNewsData:
             news_dict[filename] = dict((["title", data[0]],["summary", data[1]],["link", data[2]]))
 
         # 辞書型のデータをjson形式に変換して、指定されたパスに格納する
-        with open(self.file_path , "w") as f:
-            data = json.dumps(news_dict, sort_keys=True, indent=4)
-            f.write(data)
+        with open(self.file_path , "w", encoding="utf-8") as f:
+            json.dump(news_dict, f, indent=4, ensure_ascii=False)
+
 
         return news_dict
